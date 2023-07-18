@@ -12,7 +12,7 @@ class CoreDataManager {
     let persistentContainer: NSPersistentContainer
     
     init(){
-        persistentContainer = NSPersistentContainer(name: "MovieModel")
+        persistentContainer = NSPersistentContainer(name: "CarModel")
         
         persistentContainer.loadPersistentStores {
             (description, error) in
@@ -22,9 +22,9 @@ class CoreDataManager {
         }
     }
     
-    func saveCar(year: Int16, brand: String, model : String = "", fuel : String = "", body : String = ""){
+    func saveCar(year: Int, brand: String, model : String = "", fuel : String = "", body : String = ""){
         let car = Car(context: persistentContainer.viewContext)
-        car.year = year
+        car.year = Int16(year)
         car.brand = brand
         car.model = model
         car.fuel = fuel

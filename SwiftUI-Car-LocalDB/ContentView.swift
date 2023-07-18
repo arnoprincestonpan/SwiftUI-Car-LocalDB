@@ -17,39 +17,43 @@ struct ContentView: View {
     @State private var carBody: String = ""
     
     var body: some View {
-        VStack {
-            HStack{
-                VStack{
-                    Text("Year")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("Year", value: $carYear, format: .number)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("Body")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("Body", text: $carBody)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+        NavigationView {
+            VStack {
+                HStack{
+                    VStack{
+                        Text("Year")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        TextField("Year", value: $carYear, format: .number)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Text("Body")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        TextField("Body", text: $carBody)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
+                    VStack{
+                        Text("Brand")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        TextField("Brand", text: $carBrand)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Text("Fuel")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        TextField("Fuel", text: $carFuel)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
                 }
-                VStack{
-                    Text("Brand")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("Brand", text: $carBrand)
+                VStack {
+                    Text("Model")
+                    TextField("Model", text: $carModel)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("Fuel")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("Fuel", text: $carFuel)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    Button {
+                        let intCarYear : Int? = Int(carYear)
+                        
+                    } label: {
+                        Text("Save")
+                    }
                 }
             }.padding()
-            Text("Model")
-            TextField("Model", text: $carModel)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button {
-                let stringCarBrand : String? = String(carBrand)
-                let stringCarModel: String? = String(carModel)
-            } label: {
-                Text("Save")
-            }
-        }
+        }.navigationTitle("Cars")
     }
 }
 
