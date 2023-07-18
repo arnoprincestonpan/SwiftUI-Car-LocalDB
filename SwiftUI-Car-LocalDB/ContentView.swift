@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    let coreDataManager: CoreDataManager
+    
+    @State private var carYear: Int16 = ""
+    @State private var carBrand: String = ""
+    @State private var carModel: String = ""
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")

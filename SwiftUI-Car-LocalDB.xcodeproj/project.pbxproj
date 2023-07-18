@@ -11,6 +11,8 @@
 		A23E41FC2A66075600A606A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E41FB2A66075600A606A2 /* ContentView.swift */; };
 		A23E41FE2A66075700A606A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23E41FD2A66075700A606A2 /* Assets.xcassets */; };
 		A23E42012A66075700A606A2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23E42002A66075700A606A2 /* Preview Assets.xcassets */; };
+		A23E42092A66080400A606A2 /* CarModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A23E42072A66080400A606A2 /* CarModel.xcdatamodeld */; };
+		A23E420C2A660A9A00A606A2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23E420B2A660A9A00A606A2 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		A23E41FB2A66075600A606A2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A23E41FD2A66075700A606A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A23E42002A66075700A606A2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A23E42082A66080400A606A2 /* CarModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarModel.xcdatamodel; sourceTree = "<group>"; };
+		A23E420B2A660A9A00A606A2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 		A23E41ED2A66075600A606A2 = {
 			isa = PBXGroup;
 			children = (
+				A23E420A2A660A8100A606A2 /* Managers */,
+				A23E42072A66080400A606A2 /* CarModel.xcdatamodeld */,
 				A23E41F82A66075600A606A2 /* SwiftUI-Car-LocalDB */,
 				A23E41F72A66075600A606A2 /* Products */,
 			);
@@ -65,6 +71,14 @@
 				A23E42002A66075700A606A2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A23E420A2A660A8100A606A2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A23E420B2A660A9A00A606A2 /* CoreDataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +151,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23E42092A66080400A606A2 /* CarModel.xcdatamodeld in Sources */,
 				A23E41FC2A66075600A606A2 /* ContentView.swift in Sources */,
+				A23E420C2A660A9A00A606A2 /* CoreDataManager.swift in Sources */,
 				A23E41FA2A66075600A606A2 /* SwiftUI_Car_LocalDBApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +355,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A23E42072A66080400A606A2 /* CarModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A23E42082A66080400A606A2 /* CarModel.xcdatamodel */,
+			);
+			currentVersion = A23E42082A66080400A606A2 /* CarModel.xcdatamodel */;
+			path = CarModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A23E41EE2A66075600A606A2 /* Project object */;
 }
