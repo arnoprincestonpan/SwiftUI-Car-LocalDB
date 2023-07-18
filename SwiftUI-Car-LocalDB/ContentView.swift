@@ -19,6 +19,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Text("Car")
+                    .font(.title)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
                 HStack{
                     VStack{
                         Text("Year")
@@ -40,19 +44,20 @@ struct ContentView: View {
                         TextField("Fuel", text: $carFuel)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
-                }
+                }.padding()
                 VStack {
                     Text("Model")
                     TextField("Model", text: $carModel)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Button {
-                        let intCarYear : Int? = Int(carYear)
-                        
+                        let intCarYear : Int? = Int(carYear!)
+                        coreDataManager.saveCar(year: intCarYear!, brand: carBrand, model: carModel, fuel: carFuel, body: carBody)
                     } label: {
                         Text("Save")
                     }
-                }
-            }.padding()
+                }.padding()
+                Spacer()
+            }
         }.navigationTitle("Cars")
     }
 }
