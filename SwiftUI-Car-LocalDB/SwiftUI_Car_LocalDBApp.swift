@@ -11,7 +11,7 @@ import SwiftUI
 struct SwiftUI_Car_LocalDBApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(coreDataManager: CoreDataManager())
         }
     }
 }
