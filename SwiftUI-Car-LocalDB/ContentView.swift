@@ -15,6 +15,11 @@ struct ContentView: View {
     @State private var carBrand: String = ""
     @State private var carFuel: String = ""
     @State private var carBody: String = ""
+    @State private var cars: [Car] = [Car]()
+    
+    private func populateCars() {
+        cars = coreDataManager.getAllCars()
+    }
     
     var body: some View {
         NavigationView {
@@ -34,6 +39,7 @@ struct ContentView: View {
                         TextField("Body", text: $carBody)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
+                    .padding()
                     VStack{
                         Text("Brand")
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -44,21 +50,52 @@ struct ContentView: View {
                         TextField("Fuel", text: $carFuel)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
-                }.padding()
+                    .padding()
+                }
                 VStack {
                     Text("Model")
+                        .padding()
                     TextField("Model", text: $carModel)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
                     Button {
                         let intCarYear : Int? = Int(carYear!)
                         coreDataManager.saveCar(year: intCarYear!, brand: carBrand, model: carModel, fuel: carFuel, body: carBody)
+                        populateCars()
                     } label: {
                         Text("Save")
                     }
-                }.padding()
+                    .padding()
+                }
+                List {
+                    ForEach(cars, id:\.self){ car in 
+                        HStack {
+                            Text("\(car.year)")
+                            Spacer()
+                            Text(car.brand ?? "")
+                            Spacer()
+                            Text(car.model ?? "")
+                            Spacer()
+                            Text(car.body ?? "")
+                            Spacer()
+                            Text(car.fuel ?? "")
+                        }
+                    }
+                    .onDelete(perform: { indexSet in
+                        indexSet.forEach({ index in
+                            let car = cars[index]
+                            coreDataManager.deleteCar(car: car)
+                            populateCars()
+                        })
+                    })
+                }
                 Spacer()
             }
+            .background(Color("lightGray"))
         }.navigationTitle("Cars")
+            .onAppear(perform: {
+                populateCars()
+            })
     }
 }
 

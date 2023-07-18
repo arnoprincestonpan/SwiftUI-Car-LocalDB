@@ -36,4 +36,35 @@ class CoreDataManager {
             print("Failed to save car \(error)")
         }
     }
+    
+    func getAllCars() -> [Car] {
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        
+        do {
+            return try persistentContainer.viewContext.fetch(fetchRequest)
+        } catch {
+            return []
+        }
+    }
+    
+    func deleteCar(car: Car) {
+        persistentContainer.viewContext.delete(car)
+        
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete car \(error).")
+        }
+    }
+    
+    func updateCar() {
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to update car \(error)")
+        }
+    }
+    
 }
